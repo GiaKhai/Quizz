@@ -1,20 +1,18 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Login from "../page/Login";
-import Header from "./Header";
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "../../router";
 
-export default class App extends Component {
-    render() {
-        return (
-            // <BrowserRouter>
+const App = () => {
+    return (
+        <Router>
             <div>
-                {/* <Header /> */}
-                <Login />
+                <Routes />
             </div>
-            // </BrowserRouter>
-        );
-    }
-}
+        </Router>
+    );
+};
+
+export default App;
 
 ReactDOM.render(<App />, document.getElementById("app"));
