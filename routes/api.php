@@ -42,3 +42,7 @@ use App\Http\Controllers\PostController;
 // Route::prefix('posts')->name('posts.')->group(function () {
 //     Route::get('', [PostController::class, 'index']); 
 // });
+
+// Route::prefix('user')->name('user.')->group(function () {
+//     Route::get('user', [UserController::class, 'getUser']); 
+// });

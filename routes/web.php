@@ -14,5 +14,8 @@ use App\Http\Controllers\API\RenderSpaView;
 |
 */
 // Route::view('/{path?}', 'app');
-Route::get('{path?}', 'RenderSpaView')->where('path', '[a-zA-Z0-9-/]+');
+// Route::get('{path?}', 'RenderSpaView')->where('path', '[a-zA-Z0-9-/]+');
 
+Route::get('{any}', function () {
+    return view('app'); // or wherever your React app is bootstrapped.
+})->where('any', '.*');

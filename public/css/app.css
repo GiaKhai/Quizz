@@ -27,3 +27,16 @@ h1 {
     width: 80px;
 }
 
+.content-page {
+    padding: 3%;
+    height: 100vh;
+    /* background-color: #ffffff !important; */
+}
+
+.content-page .title {
+    font-size: 35px;
+    font-weight: 700;
+    color: #094989;
+    text-transform: uppercase;
+}
+

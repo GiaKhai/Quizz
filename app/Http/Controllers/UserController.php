@@ -32,6 +32,22 @@ class UserController extends Controller
         return $token;
     }
 
+    public function getUser() 
+    {
+        $users = User::orderBy('id', 'desc')->get();
+        return response()->json($users, 200);
+    }
+
+    public function postUser(Request $request) 
+    {
+        return User::create($request->all());
+    }
+
+    public function destroy($id)
+    {
+        return User::destroy($id);
+    }
+
     public function login(Request $request)
     {
 

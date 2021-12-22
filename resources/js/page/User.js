@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Table, Tag, Space } from "antd";
 const columns = [
@@ -29,29 +29,30 @@ const columns = [
     },
 ];
 
-const data = [
-    {
-        id: "1",
-        name: "John Brown",
-        email: "test@gmail.com",
-        role: "Admin",
-    },
-    {
-        id: "2",
-        name: "John Brown",
-        email: "test@gmail.com",
-        role: "Admin",
-    },
-    {
-        id: "3",
-        name: "John Brown",
-        email: "test@gmail.com",
-        role: "Admin",
-    },
-];
-
 const User = () => {
-    return <Table columns={columns} dataSource={data} />;
+    const [data, setData] = useState();
+
+    useEffect(async () => {
+        const fetchData = async () => {
+            try {
+                const result = await axios.get(
+                    "http://127.0.0.1:8000/api/user"
+                );
+                setData(result.data);
+                console.log(result.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, []);
+    return (
+        <div className="content-page">
+            <div className="title">User</div>
+            <Table columns={columns} dataSource={data} />
+        </div>
+    );
 };
 
 export default User;

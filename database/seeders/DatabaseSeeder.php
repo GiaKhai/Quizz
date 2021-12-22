@@ -16,9 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => env('ADMIN_NAME', 'test1'),
-            'email' => env('ADMIN_NAME', 'test1@gmail.com'),
-            'password' => Hash::make(env('ADMIN_PASSWORD', 'admin123')),
+            'name' => env('ADMIN_NAME', 'test'),
+            'email' => env('ADMIN_NAME', 'test@gmail.com'),
+            'password' => Hash::make(env('ADMIN_PASSWORD', '123456')),
+            'role' => env('role','user'),
             'is_verified' => '1'        
         ]);
     }
