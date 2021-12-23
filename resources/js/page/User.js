@@ -1,6 +1,32 @@
 import React, { useState, useEffect } from "react";
+import { UserAddOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
+import { Modal, Button, Table, message as Message } from "antd";
+import { useDispatch } from "react-redux";
+import AddUser from "../../containers/AddUser";
+import { useForm } from "antd/lib/form/Form";
+import { userURL } from "../../constants/backend_url";
+import { getUserAction } from "../../actions/user.action";
 
-import { Table, Tag, Space } from "antd";
+const { confirm } = Modal;
+
+function showConfirm(id) {
+    confirm({
+        title: "Do you want to delete?",
+        icon: <ExclamationCircleOutlined />,
+        async onOk() {
+            const res = await axios.delete(`${userURL}/${id}`);
+            console.log(res.status);
+            if (res.status === 200) {
+                Message.success("Successful delete");
+                dispatch(getUserAction());
+            }
+        },
+        onCancel() {
+            console.log("Cancel");
+        },
+    });
+}
+
 const columns = [
     {
         title: "Id",
@@ -27,29 +53,59 @@ const columns = [
         key: "role",
         align: "center",
     },
+    {
+        title: "Action",
+        key: "action",
+        render: (_, record) => {
+            return (
+                <Button danger onClick={() => showConfirm(record.id)}>
+                    Delete
+                </Button>
+            );
+        },
+        width: 30,
+        align: "center",
+    },
 ];
 
-const User = () => {
+const User = ({ userList }) => {
+    const [form] = useForm();
+    const dispatch = useDispatch();
+
     const [data, setData] = useState();
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
-    useEffect(async () => {
-        const fetchData = async () => {
-            try {
-                const result = await axios.get(
-                    "http://127.0.0.1:8000/api/user"
-                );
-                setData(result.data);
-                console.log(result.data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
+    useEffect(() => {
+        setData(userList);
+    }, [userList]);
 
-        fetchData();
-    }, []);
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
     return (
         <div className="content-page">
             <div className="title">User</div>
+            <Button
+                className="add-user"
+                type="primary"
+                shape="round"
+                icon={<UserAddOutlined />}
+                size="large"
+                onClick={showModal}
+            >
+                Add User
+            </Button>
+            <AddUser
+                setIsModalVisible={setIsModalVisible}
+                isModalVisible={isModalVisible}
+                handleCancel={handleCancel}
+                form={form}
+            />
+
             <Table columns={columns} dataSource={data} />
         </div>
     );

@@ -38,4 +38,17 @@ h1 {
     font-weight: 700;
     color: #094989;
     text-transform: uppercase;
+    display: inline;
+}
+
+.add-user {
+    margin: 10px;
+    float: right;
+    background-color: #094989 !important;
+    color: #fdb31c !important;
+}
+
+.add-user:hover {
+    background-color: #0e65bb !important;
+    color: #e79e0c !important;
 }

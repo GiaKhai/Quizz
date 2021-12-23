@@ -5,7 +5,7 @@ import { Layout } from "antd";
 
 import Header from "../js/components/Header/index";
 import HomePage from "../js/page/Homepage";
-import User from "../js/page/User";
+import UserContainer from "../containers/User";
 
 const { Content } = Layout;
 
@@ -18,7 +18,7 @@ const Authed = () => {
                     <HomePage />
                 </Route>
                 <Route exact path="/user">
-                    <User />
+                    <UserContainer />
                 </Route>
                 {/* <Route path="*">
                     <PageNotFound />
