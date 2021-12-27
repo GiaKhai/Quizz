@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\QuestionController;
+
 
 Route::group([
   'middleware' => ['jwt.auth'],
@@ -42,6 +44,10 @@ Route::prefix('user')->name('users.')->group(function () {
 
 });
 
-// Route::prefix('user')->name('user.')->group(function () {
-//     Route::get('', [UserController::class, 'getUser']); 
-// });
+Route::get('question', [QuestionController::class,'getQuestion']);
+Route::get('answer', [QuestionController::class,'getAnswer']);
+
+
+// Route::get('/users/{user}', [UserController::class, 'show']);
+
+

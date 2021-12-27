@@ -6,7 +6,6 @@ import User from "../js/page/User";
 const UserContainer = () => {
     const dispatch = useDispatch();
     const userList = useSelector((state) => state.userReducers.userList);
-
     useEffect(() => {
         dispatch(getUserAction());
     }, [dispatch]);

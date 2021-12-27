@@ -6,6 +6,9 @@ import { Layout } from "antd";
 import Header from "../js/components/Header/index";
 import HomePage from "../js/page/Homepage";
 import UserContainer from "../containers/User";
+import TestPlan from "../js/page/TestPlan";
+import QuestionList from "../js/page/QuestionList";
+import QuestionContainer from "../containers/Question";
 
 const { Content } = Layout;
 
@@ -19,6 +22,12 @@ const Authed = () => {
                 </Route>
                 <Route exact path="/user">
                     <UserContainer />
+                </Route>
+                <Route exact path="/test-plan">
+                    <TestPlan />
+                </Route>
+                <Route exact path="/question">
+                    <QuestionContainer />
                 </Route>
                 {/* <Route path="*">
                     <PageNotFound />

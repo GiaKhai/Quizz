@@ -53,3 +53,16 @@ h1 {
     color: #e79e0c !important;
 }
 
+.question {
+    margin: 5px 0;
+    border-bottom: 1px solid #d1d2d3;
+}
+
+.answers {
+    margin-left: 20px;
+}
+
+.ant-radio-wrapper {
+    display: block !important;
+}
+
