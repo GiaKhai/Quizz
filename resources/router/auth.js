@@ -9,6 +9,7 @@ import UserContainer from "../containers/User";
 import TestPlan from "../js/page/TestPlan";
 import QuestionList from "../js/page/QuestionList";
 import QuestionContainer from "../containers/Question";
+import TestList from "../js/page/TestList";
 
 const { Content } = Layout;
 
@@ -28,6 +29,9 @@ const Authed = () => {
                 </Route>
                 <Route exact path="/question">
                     <QuestionContainer />
+                </Route>
+                <Route exact path="/test-list">
+                    <TestList />
                 </Route>
                 {/* <Route path="*">
                     <PageNotFound />

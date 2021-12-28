@@ -18,6 +18,9 @@ const Header = () => {
                 <Link className="link" to="/question">
                     Question
                 </Link>
+                <Link className="link" to="/test-list">
+                    Test List
+                </Link>
             </nav>
         </header>
     );

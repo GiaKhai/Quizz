@@ -5,6 +5,8 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\Test;
+
 
 
 Route::group([
@@ -30,7 +32,7 @@ Route::group([
 ], function ($router) {
 //   Route::post('/login', 'API\AuthController@login');
   Route::post('/login', [AuthController::class, 'login']); 
-  Route::post('/register', 'API\AuthController@register');
+  // Route::post('/register', 'API\AuthController@register');
 });
 
 
@@ -47,7 +49,6 @@ Route::prefix('user')->name('users.')->group(function () {
 Route::get('question', [QuestionController::class,'getQuestion']);
 Route::get('answer', [QuestionController::class,'getAnswer']);
 
-
-// Route::get('/users/{user}', [UserController::class, 'show']);
+Route::get('test-plan', [Test::class,'getPlanList']);
 
 

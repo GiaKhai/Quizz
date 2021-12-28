@@ -1,6 +1,6 @@
 import React from "react";
 import { UserAddOutlined } from "@ant-design/icons";
-import { Button, Table } from "antd";
+import { Button, Table, Switch } from "antd";
 
 const columns = [
     {
@@ -33,6 +33,23 @@ const columns = [
         dataIndex: "testID",
         key: "testID",
         align: "center",
+    },
+    {
+        key: "status",
+        title: "Status",
+        dataIndex: "status",
+        align: "center",
+        render: (value, row, index) => {
+            return (
+                <Switch
+                    checkedChildren="Public"
+                    unCheckedChildren="Private"
+                    // checked={value === "Active" ? true : false}
+                    // onChange={() => updateUser(value, row.id)}
+                />
+            );
+        },
+        width: 130,
     },
 
     {
