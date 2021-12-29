@@ -14,7 +14,8 @@ class TestPlan extends Model
         'title',
         'schedule',
         'test_date',
-        'status'
+        'status',
+        'test_id'
     ];
 
     public function testPlan()

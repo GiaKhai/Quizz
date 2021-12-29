@@ -6,10 +6,10 @@ import { Layout } from "antd";
 import Header from "../js/components/Header/index";
 import HomePage from "../js/page/Homepage";
 import UserContainer from "../containers/User";
-import TestPlan from "../js/page/TestPlan";
 import QuestionList from "../js/page/QuestionList";
 import QuestionContainer from "../containers/Question";
 import TestList from "../js/page/TestList";
+import TestPlanContainer from "../containers/TestPlan";
 
 const { Content } = Layout;
 
@@ -25,7 +25,7 @@ const Authed = () => {
                     <UserContainer />
                 </Route>
                 <Route exact path="/test-plan">
-                    <TestPlan />
+                    <TestPlanContainer />
                 </Route>
                 <Route exact path="/question">
                     <QuestionContainer />

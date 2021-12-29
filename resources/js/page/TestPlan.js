@@ -1,100 +1,88 @@
 import React from "react";
 import { UserAddOutlined } from "@ant-design/icons";
-import { Button, Table, Switch } from "antd";
+import { Button, Table, Switch, message as Message } from "antd";
+import { getPlanAction } from "../../actions/testPlan.action";
+import { testPlanURL } from "../../constants/backend_url";
 
-const columns = [
-    {
-        title: "ID",
-        dataIndex: "id",
-        key: "id",
-        align: "center",
-        width: 120,
-    },
-    {
-        title: "Title",
-        dataIndex: "tile",
-        key: "title",
-        align: "center",
-    },
-    {
-        title: "Schedule",
-        dataIndex: "schedule",
-        key: "schedule",
-        align: "center",
-    },
-    {
-        title: "Test date",
-        dataIndex: "testDate",
-        key: "testDate",
-        align: "center",
-    },
-    {
-        title: "Test ID",
-        dataIndex: "testID",
-        key: "testID",
-        align: "center",
-    },
-    {
-        key: "status",
-        title: "Status",
-        dataIndex: "status",
-        align: "center",
-        render: (value, row, index) => {
-            return (
-                <Switch
-                    checkedChildren="Public"
-                    unCheckedChildren="Private"
-                    // checked={value === "Active" ? true : false}
-                    // onChange={() => updateUser(value, row.id)}
-                />
-            );
+function TestPlan({ planList }) {
+    console.log(planList);
+
+    const columns = [
+        {
+            title: "ID",
+            dataIndex: "id",
+            key: "id",
+            align: "center",
+            width: 120,
         },
-        width: 130,
-    },
-
-    {
-        title: "Action",
-        key: "action",
-        render: (_, record) => {
-            return <Button danger>Delete</Button>;
+        {
+            title: "Title",
+            dataIndex: "title",
+            key: "title",
+            align: "center",
         },
-        width: 30,
-        align: "center",
-    },
-];
+        {
+            title: "Schedule",
+            dataIndex: "schedule",
+            key: "schedule",
+            align: "center",
+        },
+        {
+            title: "Test date",
+            dataIndex: "test_date",
+            key: "test_date",
+            align: "center",
+        },
+        {
+            title: "Test ID",
+            dataIndex: "test_id",
+            key: "test_id",
+            align: "center",
+        },
+        {
+            key: "status",
+            title: "Status",
+            dataIndex: "status",
+            align: "center",
+            render: (value, row, index) => {
+                console.log(value);
+                return (
+                    <Switch
+                        checkedChildren="Public"
+                        unCheckedChildren="Private"
+                        checked={value === 1 ? true : false}
+                        // onChange={() => updateUser(value, row.id)}
+                    />
+                );
+            },
+            width: 130,
+        },
 
-const dataSource = [
-    {
-        id: "1",
-        tile: "Test Math",
-        schedule: "Test in home",
-        testDate: "10-10-2021",
-        testID: "1111",
-    },
-    {
-        id: "2",
-        tile: "Test English",
-        schedule: "Test in class",
-        testDate: "10-10-2021",
-        testID: "2222",
-    },
-    {
-        id: "1",
-        tile: "Test Education",
-        schedule: "Test in class",
-        testDate: "10-10-2021",
-        testID: "3333",
-    },
-    {
-        id: "1",
-        tile: "Test IT",
-        schedule: "Test in home",
-        testDate: "10-10-2021",
-        testID: "4444",
-    },
-];
-
-function TestPlan() {
+        {
+            title: "Action",
+            key: "action",
+            render: (_, record) => {
+                return (
+                    <Button
+                        onClick={async () => {
+                            const res = await axios.delete(
+                                `${testPlanURL}/${record.id}`
+                            );
+                            if (res.status === 200) {
+                                Message.success("Successful delete");
+                                dispatch(getPlanAction());
+                            }
+                        }}
+                        danger
+                    >
+                        Delete
+                    </Button>
+                );
+            },
+            width: 30,
+            align: "center",
+        },
+    ];
     return (
         <div className="content-page">
             <div className="title">Test Plan</div>
@@ -109,7 +97,7 @@ function TestPlan() {
                 Add Test
             </Button>
 
-            <Table columns={columns} dataSource={dataSource} />
+            <Table columns={columns} dataSource={planList} />
         </div>
     );
 }

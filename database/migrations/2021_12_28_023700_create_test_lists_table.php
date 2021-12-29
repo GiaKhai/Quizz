@@ -16,6 +16,8 @@ class CreateTestListsTable extends Migration
         Schema::create('test_lists', function (Blueprint $table) {
             $table->increments("id");
             $table->string('title');
+            $table->timestamps();
+
         });
     }
 

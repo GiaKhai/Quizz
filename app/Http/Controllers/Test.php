@@ -14,4 +14,15 @@ class Test extends Controller
         $list = $plan->getPlan();    
         return response()->json($list, 200);
     }
+
+    public function postTestPlan(Request $request) 
+    {
+        return TestPlan::create($request->all());
+    }
+
+     public function destroy($id)
+    {
+        return TestPlan::destroy($id);
+    }
+    
 }

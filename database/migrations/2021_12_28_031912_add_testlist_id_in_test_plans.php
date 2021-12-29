@@ -14,8 +14,8 @@ class AddTestlistIdInTestPlans extends Migration
     public function up()
     {
         Schema::table('test_plans', function (Blueprint $table) {
-            $table-> unsignedInteger("testlist_id")-> after("id");
-            $table-> foreign("testlist_id")->references("id")->on("test_lists")->onDelete("cascade");
+            $table-> unsignedInteger("test_id")->default(0)->nullable()-> after("id");
+            $table-> foreign("test_id")->references("id")->on("test_lists")->onDelete("cascade");
         });
     }
 

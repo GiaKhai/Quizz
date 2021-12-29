@@ -19,6 +19,7 @@ class CreateTestPlansTable extends Migration
             $table->string('schedule');
             $table->date('test_date');
             $table->boolean('status');
+            $table->timestamps();
         });
     }
 
