@@ -10,16 +10,16 @@ const Header = () => {
             </div>
             <nav>
                 <Link className="link" to="/user">
-                    User
+                    Người Dùng
                 </Link>
                 <Link className="link" to="/test-plan">
-                    Test Plan
+                    Kế hoạch
                 </Link>
                 <Link className="link" to="/question">
-                    Question
+                    Câu hỏi
                 </Link>
                 <Link className="link" to="/test-list">
-                    Test List
+                    Bài kiểm tra
                 </Link>
             </nav>
         </header>

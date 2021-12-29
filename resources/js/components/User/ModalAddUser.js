@@ -6,7 +6,7 @@ const ModalAddUser = ({ form, handleSubmit, handleCancel, isModalVisible }) => {
     return (
         <div>
             <Modal
-                title="Add User"
+                title="Thêm Người Dùng"
                 visible={isModalVisible}
                 onOk={handleSubmit}
                 onCancel={handleCancel}
@@ -23,11 +23,11 @@ const ModalAddUser = ({ form, handleSubmit, handleCancel, isModalVisible }) => {
                             <Form.Item
                                 name="name"
                                 id="name"
-                                label="Name:"
+                                label="Tên:"
                                 rules={[
                                     {
                                         required: true,
-                                        message: "Enter your name",
+                                        message: "Vui lòng nhập tên",
                                     },
                                 ]}
                             >
@@ -42,7 +42,7 @@ const ModalAddUser = ({ form, handleSubmit, handleCancel, isModalVisible }) => {
                                     {
                                         type: "email",
                                         required: true,
-                                        message: "The input is not valid Email",
+                                        message: "Vui lòng nhập email",
                                     },
                                 ]}
                             >
@@ -53,31 +53,31 @@ const ModalAddUser = ({ form, handleSubmit, handleCancel, isModalVisible }) => {
                         <Col xs={{ span: 12 }}>
                             <Form.Item
                                 name="password"
-                                label="Password"
-                                // rules={[
-                                //     {
-                                //         required: true,
-                                //         message: "Please input your password!",
-                                //     },
-                                //     {
-                                //         validator: (_, value) => {
-                                //             var regex = new RegExp(
-                                //                 /^(?=.*[0-9])(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
-                                //             );
-                                //             if (value) {
-                                //                 if (value.match(regex)) {
-                                //                     return Promise.resolve();
-                                //                 }
-                                //                 return Promise.reject(
-                                //                     "Minimum 8 characters, At least 1 UPPER CASE, 1 lower case, 1 number "
-                                //                 );
-                                //             }
+                                label="Mật khẩu"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: "Vui lòng nhập mật khẩu!",
+                                    },
+                                    {
+                                        validator: (_, value) => {
+                                            var regex = new RegExp(
+                                                /^(?=.*[0-9])(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+                                            );
+                                            if (value) {
+                                                if (value.match(regex)) {
+                                                    return Promise.resolve();
+                                                }
+                                                return Promise.reject(
+                                                    "Tối thiểu 8 ký tự, ít nhất 1 chữ viết hoa, 1 chữ thường, 1 số"
+                                                );
+                                            }
 
-                                //             return Promise.resolve();
-                                //         },
-                                //     },
-                                // ]}
-                                // hasFeedback
+                                            return Promise.resolve();
+                                        },
+                                    },
+                                ]}
+                                hasFeedback
                             >
                                 <Input.Password />
                             </Form.Item>
@@ -85,14 +85,13 @@ const ModalAddUser = ({ form, handleSubmit, handleCancel, isModalVisible }) => {
                         <Col xs={{ span: 12 }}>
                             <Form.Item
                                 name="password2"
-                                label="Confirm Password"
+                                label="Xác nhận mật khẩu"
                                 dependencies={["password"]}
                                 hasFeedback
                                 rules={[
                                     {
                                         required: true,
-                                        message:
-                                            "Please confirm your password!",
+                                        message: "Vui lòng nhập lại mật khẩu",
                                     },
                                     ({ getFieldValue }) => ({
                                         validator(_, value) {
@@ -105,7 +104,7 @@ const ModalAddUser = ({ form, handleSubmit, handleCancel, isModalVisible }) => {
                                             }
                                             return Promise.reject(
                                                 new Error(
-                                                    "The two passwords that you entered do not match!"
+                                                    "Mật khẩu bạn đã nhập không khớp!"
                                                 )
                                             );
                                         },
@@ -118,17 +117,17 @@ const ModalAddUser = ({ form, handleSubmit, handleCancel, isModalVisible }) => {
                         <Col xs={{ span: 12 }}>
                             <Form.Item
                                 name="role"
-                                label="Role:"
+                                label="Quyền:"
                                 rules={[
                                     {
                                         required: true,
-                                        message: "Select your role",
+                                        message: "Vui lòng chọn quyền",
                                     },
                                 ]}
                             >
                                 <Select allowClear>
                                     <Option value="Admin">Admin</Option>
-                                    <Option value="User">User</Option>
+                                    <Option value="User">Người thi</Option>
                                 </Select>
                             </Form.Item>
                         </Col>

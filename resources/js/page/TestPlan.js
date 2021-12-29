@@ -9,47 +9,49 @@ function TestPlan({ planList }) {
 
     const columns = [
         {
-            title: "ID",
+            title: "STT",
             dataIndex: "id",
             key: "id",
             align: "center",
             width: 120,
         },
         {
-            title: "Title",
+            title: "Tiêu đề",
             dataIndex: "title",
             key: "title",
             align: "center",
+            width: 200,
         },
         {
-            title: "Schedule",
+            title: "Lịch trình",
             dataIndex: "schedule",
             key: "schedule",
             align: "center",
         },
         {
-            title: "Test date",
+            title: "Ngày kiểm tra",
             dataIndex: "test_date",
             key: "test_date",
             align: "center",
         },
         {
-            title: "Test ID",
+            title: "Mã bài kiểm tra",
             dataIndex: "test_id",
             key: "test_id",
             align: "center",
+            width: 130,
         },
         {
             key: "status",
-            title: "Status",
+            title: "Trạng thái",
             dataIndex: "status",
             align: "center",
             render: (value, row, index) => {
                 console.log(value);
                 return (
                     <Switch
-                        checkedChildren="Public"
-                        unCheckedChildren="Private"
+                        checkedChildren="Mở"
+                        unCheckedChildren="Đóng"
                         checked={value === 1 ? true : false}
                         // onChange={() => updateUser(value, row.id)}
                     />
@@ -59,7 +61,7 @@ function TestPlan({ planList }) {
         },
 
         {
-            title: "Action",
+            title: "Hành động",
             key: "action",
             render: (_, record) => {
                 return (
@@ -69,23 +71,23 @@ function TestPlan({ planList }) {
                                 `${testPlanURL}/${record.id}`
                             );
                             if (res.status === 200) {
-                                Message.success("Successful delete");
+                                Message.success("Xóa thành công");
                                 dispatch(getPlanAction());
                             }
                         }}
                         danger
                     >
-                        Delete
+                        Xóa
                     </Button>
                 );
             },
-            width: 30,
+            width: 150,
             align: "center",
         },
     ];
     return (
         <div className="content-page">
-            <div className="title">Test Plan</div>
+            <div className="title">Kế hoạch kiểm tra</div>
             <Button
                 className="add-user"
                 type="primary"
@@ -94,7 +96,7 @@ function TestPlan({ planList }) {
                 size="large"
                 // onClick={showModal}
             >
-                Add Test
+                Thêm kế hoạch
             </Button>
 
             <Table columns={columns} dataSource={planList} />

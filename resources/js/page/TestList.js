@@ -5,7 +5,7 @@ import { Button } from "antd";
 function TestList() {
     return (
         <div className="content-page">
-            <div className="title">Test List</div>
+            <div className="title">Danh sách bài kiểm tra</div>
             <Button
                 className="add-user"
                 type="primary"
@@ -14,7 +14,7 @@ function TestList() {
                 size="large"
                 // onClick={showModal}
             >
-                Add Test
+                Thêm bài kiểm tra
             </Button>
         </div>
     );

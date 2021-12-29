@@ -11,13 +11,13 @@ const { confirm } = Modal;
 
 function showConfirm(id) {
     confirm({
-        title: "Do you want to delete?",
+        title: "Bạn có muốn xóa?",
         icon: <ExclamationCircleOutlined />,
         async onOk() {
             const res = await axios.delete(`${userURL}/${id}`);
             console.log(res.status);
             if (res.status === 200) {
-                Message.success("Successful delete");
+                Message.success("Xóa thành công");
                 dispatch(getUserAction());
             }
         },
@@ -29,14 +29,14 @@ function showConfirm(id) {
 
 const columns = [
     {
-        title: "Id",
+        title: "STT",
         dataIndex: "id",
         key: "id",
         align: "center",
         width: 120,
     },
     {
-        title: "Name",
+        title: "Tên",
         dataIndex: "name",
         key: "name",
         align: "center",
@@ -48,23 +48,23 @@ const columns = [
         align: "center",
     },
     {
-        title: "Role",
+        title: "Quyền",
         dataIndex: "role",
         key: "role",
         align: "center",
     },
     {
-        title: "Action",
+        title: "Hành động",
         key: "action",
         render: (_, record) => {
             return (
                 <Button danger onClick={() => showConfirm(record.id)}>
-                    Delete
+                    Xóa
                 </Button>
             );
         },
-        width: 30,
         align: "center",
+        width: 150,
     },
 ];
 
@@ -88,7 +88,7 @@ const User = ({ userList }) => {
     };
     return (
         <div className="content-page">
-            <div className="title">User</div>
+            <div className="title">Quản lí người dùng</div>
             <Button
                 className="add-user"
                 type="primary"
@@ -97,7 +97,7 @@ const User = ({ userList }) => {
                 size="large"
                 onClick={showModal}
             >
-                Add User
+                Thêm người dùng
             </Button>
             <AddUser
                 setIsModalVisible={setIsModalVisible}

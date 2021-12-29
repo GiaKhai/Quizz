@@ -13,7 +13,7 @@ function QuestionList({ questionList }) {
 
     return (
         <div className="content-page">
-            <div className="title">Question List</div>
+            <div className="title">Câu hỏi</div>
             {questionList?.map((ques, index) => (
                 <div key={index} className="question">
                     <Title level={4}>
