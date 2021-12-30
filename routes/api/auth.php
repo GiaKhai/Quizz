@@ -48,6 +48,8 @@ Route::get('question', [QuestionController::class,'getQuestion']);
 Route::get('answer', [QuestionController::class,'getAnswer']);
 
 Route::get('test-plan', [Test::class,'getPlanList']);
-// Route::post('test-plan', [Test::class,'postTestPlan']);
-Route::delete('test-plan/{id}', [Test::class, 'destroy']); 
+Route::post('test-plan', [Test::class,'postTestPlan']);
+Route::delete('test-plan/{id}', [Test::class, 'destroy']);
+Route::post('test-plan/{id}', [Test::class, 'updateTestPlan']);
 
+Route::get('test-list', [Test::class,'getTestList']);

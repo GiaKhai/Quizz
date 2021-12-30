@@ -1,6 +1,7 @@
 import axios from "axios";
 import { testPlanURL } from "../constants/backend_url";
 import { testPlanConstants } from "../constants/testPlan.contants";
+import { message as Message } from "antd";
 
 const getPlanSuccess = (data) => {
     return {
@@ -26,4 +27,16 @@ export const getPlanAction = () => {
             dispatch(getPlanFail());
         }
     };
+};
+
+export const postPlanAction = async (body) => {
+    try {
+        const result = await axios.post(testPlanURL, body);
+        if (result.status === 201) {
+            Message.success("Add success");
+            return { success: true };
+        }
+    } catch (error) {
+        return { success: false };
+    }
 };

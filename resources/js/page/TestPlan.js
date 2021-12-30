@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { UserAddOutlined } from "@ant-design/icons";
-import { Button, Table, Switch, message as Message } from "antd";
+import { Modal, Button, Table, Switch, message as Message } from "antd";
 import { getPlanAction } from "../../actions/testPlan.action";
 import { testPlanURL } from "../../constants/backend_url";
+import AddPlan from "../../containers/AddPlan";
+import { useForm } from "antd/lib/form/Form";
+import { userURL } from "../../constants/backend_url";
 
 function TestPlan({ planList }) {
+    const [form] = useForm();
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
+
     console.log(planList);
 
     const columns = [
@@ -47,7 +61,6 @@ function TestPlan({ planList }) {
             dataIndex: "status",
             align: "center",
             render: (value, row, index) => {
-                console.log(value);
                 return (
                     <Switch
                         checkedChildren="Mở"
@@ -94,10 +107,17 @@ function TestPlan({ planList }) {
                 shape="round"
                 icon={<UserAddOutlined />}
                 size="large"
-                // onClick={showModal}
+                onClick={showModal}
             >
                 Thêm kế hoạch
             </Button>
+
+            <AddPlan
+                setIsModalVisible={setIsModalVisible}
+                isModalVisible={isModalVisible}
+                handleCancel={handleCancel}
+                form={form}
+            />
 
             <Table columns={columns} dataSource={planList} />
         </div>
