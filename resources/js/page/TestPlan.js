@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { UserAddOutlined } from "@ant-design/icons";
-import { Modal, Button, Table, Switch, message as Message } from "antd";
+import { Button, Table, Switch, message as Message } from "antd";
 import { getPlanAction } from "../../actions/testPlan.action";
 import { testPlanURL } from "../../constants/backend_url";
 import AddPlan from "../../containers/AddPlan";
 import { useForm } from "antd/lib/form/Form";
-import { userURL } from "../../constants/backend_url";
 
-function TestPlan({ planList }) {
+function TestPlan({ planList, updateStatus }) {
     const [form] = useForm();
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -18,9 +17,6 @@ function TestPlan({ planList }) {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
-
-    console.log(planList);
-
     const columns = [
         {
             title: "STT",
@@ -66,7 +62,7 @@ function TestPlan({ planList }) {
                         checkedChildren="Mở"
                         unCheckedChildren="Đóng"
                         checked={value === 1 ? true : false}
-                        // onChange={() => updateUser(value, row.id)}
+                        onChange={() => updateStatus(value, row.id)}
                     />
                 );
             },

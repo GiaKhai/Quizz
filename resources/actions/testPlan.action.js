@@ -40,3 +40,14 @@ export const postPlanAction = async (body) => {
         return { success: false };
     }
 };
+
+export const updateStatusAction = async (body, id) => {
+    try {
+        const response = await axios.post(`${testPlanURL}/${id}`, body);
+        if (response.status === 200) {
+            Message.success("Update status plan success");
+        }
+    } catch (error) {
+        Message.error("Update status user false");
+    }
+};
