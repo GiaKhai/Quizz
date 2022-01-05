@@ -21,6 +21,9 @@ const Header = () => {
                 <Link className="link" to="/test-list">
                     Bài kiểm tra
                 </Link>
+                <Link className="link" to="/testing">
+                    Làm Bài
+                </Link>
             </nav>
         </header>
     );

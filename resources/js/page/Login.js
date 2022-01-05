@@ -13,7 +13,7 @@ const Login = () => {
     const handleSubmit = async () => {
         console.log("data");
         let cookie = document.cookie;
-        console.log(cookie);
+        // console.log(cookie);
         try {
             const response = await axios.post(
                 "http://127.0.0.1:8000/api/auth/login",

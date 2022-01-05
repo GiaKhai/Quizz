@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\Test;
+use App\Http\Controllers\TestListController;
 
 
 
@@ -52,4 +53,9 @@ Route::post('test-plan', [Test::class,'postTestPlan']);
 Route::delete('test-plan/{id}', [Test::class, 'destroy']);
 Route::post('test-plan/{id}', [Test::class, 'updateTestPlan']);
 
-Route::get('test-list', [Test::class,'getTestList']);
+Route::get('test-list', [TestListController::class,'getTestList']);
+Route::get('test-list/{id}', [TestListController::class,'getTestListbyId']);
+Route::delete('test-list/{id}', [TestListController::class, 'destroy']);
+
+
+

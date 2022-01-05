@@ -49,7 +49,7 @@ function TestPlan({ planList, updateStatus }) {
             dataIndex: "test_id",
             key: "test_id",
             align: "center",
-            width: 130,
+            width: 200,
         },
         {
             key: "status",
