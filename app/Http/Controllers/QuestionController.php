@@ -17,9 +17,19 @@ class QuestionController extends Controller
         return response()->json($list, 200);
     }
 
-// public function getAnswer() 
-//     {
-//         $ques = Answer::all();
-//         return response()->json($ques, 200);
-//     }
+    public function getAnswer() 
+    {
+        $ques = Answer::all();
+        return response()->json($ques, 200);
+    }
+
+    public function postQuestion(Request $request) 
+    {
+        return Question::create($request->all());
+    }
+
+    public function postAnswer(Request $request) 
+    {
+        return Answer::create($request->all());
+    }
 }

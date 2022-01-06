@@ -17,15 +17,8 @@ class Test extends Controller
         return response()->json($list, 200);
     }
 
-    public function getTestList() 
-    {  
-        $list = TestList::all();
-        return response()->json($list, 200);
-    }
-
     public function postTestPlan(Request $request) 
     {
-        Log::info($request);
         return TestPlan::create($request->all());
     }
 
@@ -35,8 +28,6 @@ class Test extends Controller
         $plan->status = $request->status;
         $plan->save();
     }
-
-
      public function destroy($id)
     {
         return TestPlan::destroy($id);

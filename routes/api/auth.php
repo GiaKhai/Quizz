@@ -46,7 +46,11 @@ Route::prefix('user')->name('users.')->group(function () {
 });
 
 Route::get('question', [QuestionController::class,'getQuestion']);
+Route::post('question', [QuestionController::class,'postQuestion']);
+
 Route::get('answer', [QuestionController::class,'getAnswer']);
+Route::post('answer', [QuestionController::class,'postAnswer']);
+
 
 Route::get('test-plan', [Test::class,'getPlanList']);
 Route::post('test-plan', [Test::class,'postTestPlan']);
