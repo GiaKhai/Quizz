@@ -17,6 +17,7 @@ const ModalAddUser = ({ form, handleSubmit, handleCancel, isModalVisible }) => {
                     wrapperCol={{ span: 20 }}
                     layout="vertical"
                     name="nest-messages"
+                    autoComplete="off"
                 >
                     <Row>
                         <Col xs={{ span: 12 }}>

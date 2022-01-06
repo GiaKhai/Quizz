@@ -1,5 +1,5 @@
 import axios from "axios";
-import { questionURL } from "../constants/backend_url";
+import { questionURL, answerURL } from "../constants/backend_url";
 import { questionConstants } from "../constants/question.contants";
 import { message as Message } from "antd";
 
@@ -27,4 +27,28 @@ export const getQuestionAction = () => {
             dispatch(getQuestionFail());
         }
     };
+};
+
+export const postQuestionAction = async (body) => {
+    try {
+        const result = await axios.post(questionURL, body);
+        if (result.status === 201) {
+            Message.success("Add success");
+            return { success: true };
+        }
+    } catch (error) {
+        return { success: false };
+    }
+};
+
+export const postAnswerAction = async (body) => {
+    try {
+        const result = await axios.post(answerURL, body);
+        if (result.status === 201) {
+            Message.success("Add success");
+            return { success: true };
+        }
+    } catch (error) {
+        return { success: false };
+    }
 };
